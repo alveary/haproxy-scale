@@ -51,5 +51,6 @@ ENV app_dir /host_parser
 ENV proxy_config_file /usr/local/etc/haproxy/haproxy.cfg
 ADD . $app_dir
 WORKDIR $app_dir
+RUN chmod +x ./run.sh
 
-CMD ["ruby", "host_parser.rb"]
+CMD ["./run.sh"]

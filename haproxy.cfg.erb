@@ -27,9 +27,9 @@ backend proxy_backends
   balance roundrobin
 
   <% services.each do |name, address| %>
-  server <%= name %> <%= name %>:<%= proxy_port %> check
+  server <%= name %> <%= name %>:<%= proxy_port %> check inter 10000
   <% end %>
 
   # option httpchk OPTIONS * HTTP/1.1\r\nHost:\ localhost
-  option httpchk GET /
+  option httpchk GET /alive
   http-check expect status 200
