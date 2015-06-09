@@ -32,6 +32,8 @@ end
 
 puts services.inspect
 
+throw :no_services unless services.length > 0
+
 template = ERB.new(haproxy_cfg)
 # puts template.result
 File.write(ENV['proxy_config_file'], template.result)
